@@ -1,4 +1,4 @@
-package Scala_tasks.exercise02
+package Scala_tasks.exercise03
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}

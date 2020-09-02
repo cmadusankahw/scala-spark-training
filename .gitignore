@@ -25,6 +25,3 @@ gradle-app.setting
 # User-specific stuff:
 .idea/
 
-# IntelliJ
-/out/
-*.iml
