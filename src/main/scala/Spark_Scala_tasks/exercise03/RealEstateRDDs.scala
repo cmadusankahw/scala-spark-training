@@ -19,7 +19,7 @@ object RealEstateRDDs {
     val realEstate: RDD[String] = sc.textFile("in/RealEstate.csv")
 
     // removing Header
-    val realEstateFinal: RDD[String] = realEstate.filter(line => isNotHeader(line))
+    val realEstateFinal: RDD[String] = realEstate.filter(line => isNotHeader(line)).map(line => line.replace(" ", ""))
 
     // Task 1: filter and count Number of houses located in Santa Maria-Orcutt
     val housesInSantaMariaOrcutt: RDD[String] = realEstateFinal.filter(line => line.split(Utils.COMMA_DELIMITER)(1) == "Santa Maria-Orcutt")
