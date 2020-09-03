@@ -1,11 +1,14 @@
 package Spark_Scala_tasks.exercise02
 
+import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.util.control.Exception
 
 object airportCounts {
   def main(args: Array[String]) {
+
+    Logger.getLogger("org").setLevel(Level.ERROR)
 
     // initializing sparkContext
     val conf = new SparkConf().setAppName("airportCounts").setMaster("local[2]")
