@@ -72,6 +72,13 @@ object ClickStreamRDDs {
 
     ClicksPerProductChannelPairRDD.saveAsTextFile("out/exercise03/Task_2_5_Clicks_Per_Product_Channel.text")
 
+    // Task 3: Top 5 Products
+    // Using a pair RDD
+    val TopProductsPairRDD = clickStream.map(line => (line.split(Utils.COMMA_DELIMITER)(2), 1)).groupByKey().sortBy(_._2, false)
+
+    TopProductsPairRDD.saveAsTextFile("out/exercise03/Task_3_Top_5_Products.text")
+
+
   }
 
 }

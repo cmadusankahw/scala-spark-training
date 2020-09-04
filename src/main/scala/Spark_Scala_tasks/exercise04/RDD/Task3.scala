@@ -17,12 +17,11 @@ object Task3 {
     // read RealState.text file as a RDD
     val clickStream: RDD[String] = sc.textFile("in/clickstream.csv")
 
-
     // Task 3: Top 5 Products
     // Using a pair RDD
-    val ClicksPerProductPairRDD = clickStream.map(line => (line.split(Utils.COMMA_DELIMITER)(2), 1)).groupByKey()
+    val TopProductsPairRDD = clickStream.map(line => (line.split(Utils.COMMA_DELIMITER)(2), 1)).groupByKey().sortBy(_._2, false)
 
-    ClicksPerProductPairRDD.saveAsTextFile("out/exercise03/Task_3_Top_5_Products.text")
+    TopProductsPairRDD.saveAsTextFile("out/exercise03/Task_3_Top_5_Products.text")
 
   }
 }
