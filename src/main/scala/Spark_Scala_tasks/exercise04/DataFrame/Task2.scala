@@ -1,18 +1,13 @@
-package Spark_Scala_tasks.exercise04
+package Spark_Scala_tasks.exercise04.DataFrame
 
-import Spark_Scala_tasks.exercise03.RealEstateDataFrames.PRICE_SQ_FT
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.functions._
 
-import scala.util.control.Exception.noCatch.desc
-
-object ClickStreamDataFrame {
+object Task2 {
   def main(args: Array[String]) {
 
     Logger.getLogger("org").setLevel(Level.ERROR)
     val session = SparkSession.builder().appName("ClickStreamDataFrames").master("local[2]").getOrCreate()
-    import session.implicits._
 
     val clickStream = session.read
       .option("header", "true")
@@ -54,14 +49,5 @@ object ClickStreamDataFrame {
       .as("No of Clicks")
       .show(true)
 
-    // Task 3: Top 5 products according to the number of clicks
-    val productList = clickStream
-      .groupBy("Product")
-      .count()
-      .as("No of Clicks")
-
-    productList.orderBy($"count".desc)
-      .limit(5)
-      .show(true)
   }
 }
