@@ -3,8 +3,9 @@ package Spark_test
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
+import org.scalatest.{FunSuite}
 
-object TestSpark {
+object TestSpark extends FunSuite {
   Logger.getLogger("org").setLevel(Level.ERROR)
   val conf = new SparkConf().setAppName("test").setMaster("local")
   val sc = new SparkContext(conf)
