@@ -1,14 +1,13 @@
-package Spark_Scala_tasks.exercise06
+package Spark_MLLib_tasks.exercise01
 
 import org.apache.log4j.{Level, Logger}
-
-import scala.io.Source
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkConf
 import org.apache.spark.mllib.clustering.KMeans
 import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.{SparkConf, SparkContext}
 
-object SparkMLLib {
+import scala.io.Source
+
+object KMeansClustering {
   def main(args: Array[String]) {
 
     Logger.getLogger("org").setLevel(Level.ERROR)
