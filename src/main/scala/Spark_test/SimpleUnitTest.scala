@@ -28,7 +28,7 @@ object SimpleUnitTest extends FunSuite {
 
     // duplicated/mocked function
     def verifyWordCount(seq: Seq[String]): Unit = {
-      assertResult(expectedResult)(new WordCount().transform(sc.makeRDD(seq)).collect().toList)
+      assertResult(expectedResult)() // function to test)
     }
 
 }

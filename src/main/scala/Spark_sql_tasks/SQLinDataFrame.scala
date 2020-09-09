@@ -9,9 +9,6 @@ object SQLinDataFrame {
   def main(args: Array[String]) {
 
     Logger.getLogger("org").setLevel(Level.ERROR)
-    val conf = new SparkConf().setAppName("StackOverFlowSurvey").setMaster("local[1]")
-
-    val sc = new SparkContext(conf)
 
     val session = SparkSession.builder().appName("StackOverFlowSurvey").master("local[1]").getOrCreate()
 
@@ -20,20 +17,17 @@ object SQLinDataFrame {
       .option("inferSchema", value = true)
       .csv("in/RealEstate.csv")
 
-    // get number of partitions
-    raw_data.getNumPartitions
-
     // create spark sql context
     val sql_context = session.sqlContext
 
     // register temporary table
-    raw_data.createOrReplaceGlobalTempView('sample')
+    raw_data.createOrReplaceGlobalTempView("sample")
 
     // get the value count using the sql query
-    val gender = sql_context.sql(" SELECT Status, count(*) as freq from sample GROUP BY Status ")
+    val status = sql_context.sql(" SELECT Status, count(*) as freq from sample GROUP BY Status ")
 
     // view the results
-    gender.show()
+    status.show()
 
   }
 }

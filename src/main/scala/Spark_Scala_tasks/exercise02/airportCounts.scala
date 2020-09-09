@@ -3,8 +3,6 @@ package Spark_Scala_tasks.exercise02
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}
 
-import scala.util.control.Exception
-
 object airportCounts {
   def main(args: Array[String]) {
 

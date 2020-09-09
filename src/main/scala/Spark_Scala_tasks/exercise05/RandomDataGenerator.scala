@@ -3,8 +3,6 @@ package Spark_Scala_tasks.exercise05
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.mllib.random.RandomRDDs._
-import org.apache.spark.sql.functions
-
 
 object RandomDataGenerator {
   def main(args: Array[String]): Unit = {
