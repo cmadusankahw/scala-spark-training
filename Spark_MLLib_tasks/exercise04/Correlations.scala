@@ -1,11 +1,10 @@
-package Spark_MLLib_tasks.exercise03
+package Spark_MLLib_tasks.exercise04
 
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.mllib.linalg._
 import org.apache.spark.mllib.random.RandomRDDs
 import org.apache.spark.mllib.stat.Statistics
 import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
 
 object Correlations {
 
@@ -36,15 +35,6 @@ object Correlations {
     // method is not specified, Pearson's method will be used by default.
     // Note: same method can be applied to a Vector RDD as well ( RDD[Vector] )
     val correlation: Double = Statistics.corr(seriesX, seriesY, "pearson")
-
-    // Vector RDD : Output will be a Matrix
-
-    val data  = RandomRDDs.uniformVectorRDD(sc, 10,10)
-    .map(a => DenseVector)
-      .map(a => (a,))
-    .toDF()
-
-    val correlMatrix: Matrix = Statistics.corr(data, "pearson")
 
     println("Correlation is: " + correlation)
 
